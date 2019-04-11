@@ -1,6 +1,4 @@
 const dpapi = require ('./build/Release/node-windpapi');
-const sum = dpapi.test(1, 6);
-console.log(`1 + 6 = ${sum}`);
 
 const entropy = Buffer.from("AHHH!H!H!H!!!!", "utf-8");
 

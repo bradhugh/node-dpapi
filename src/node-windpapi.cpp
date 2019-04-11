@@ -3,32 +3,6 @@
 #include <Windows.h>
 #include <dpapi.h>
 
-NAN_METHOD(test)
-{
-	v8::Isolate* isolate = info.GetIsolate();
-
-	if (info.Length() != 2) {
-		isolate->ThrowException(v8::Exception::RangeError(
-			v8::String::NewFromUtf8(isolate, "Two arguments are required")));
-	}
-
-	if (!info[0]->IsNumber()) {
-		isolate->ThrowException(v8::Exception::TypeError(
-			v8::String::NewFromUtf8(isolate, "First argument must be a number")));
-		return;
-	}
-
-	if (!info[1]->IsNumber()) {
-		isolate->ThrowException(v8::Exception::TypeError(
-			v8::String::NewFromUtf8(isolate, "Second argument must be a number")));
-		return;
-	}
-
-	double sum = info[0]->NumberValue() + info[1]->NumberValue();
-
-	info.GetReturnValue().Set(sum);
-}
-
 // public unsafe static byte[] Protect(byte[] userData, byte[] optionalEntropy, DataProtectionScope scope) 
 NAN_METHOD(protect)
 {
@@ -195,11 +169,6 @@ NAN_METHOD(unprotect)
 
 NAN_MODULE_INIT(init)
 {
-	Nan::Set(
-		target,
-		Nan::New<v8::String>("test").ToLocalChecked(),
-		Nan::GetFunction(Nan::New<v8::FunctionTemplate>(test)).ToLocalChecked());
-
 	Nan::Set(
 		target,
 		Nan::New<v8::String>("protect").ToLocalChecked(),
