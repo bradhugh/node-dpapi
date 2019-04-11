@@ -57,10 +57,36 @@ NAN_METHOD(protect)
 			v8::String::NewFromUtf8(isolate, "Third argument, scope, must be a string")));
 	}
 
-	auto message = v8::String::NewFromUtf8(isolate, "You win");
-	info.GetReturnValue().Set(message);
+	// auto data = v8::Uint8Arrayinfo[0]->ToObject());
+	auto buffer = node::Buffer::Data(info[0]);
+	auto len = node::Buffer::Length(info[0]);
+	
+	DATA_BLOB dataIn;
+	DATA_BLOB dataOut;
 
-	DATA_BLOB blob;
+	// initialize input data
+	dataIn.pbData = reinterpret_cast<BYTE*>(buffer);
+	dataIn.cbData = len;
+
+	bool success = CryptProtectData(
+		&dataIn,
+		L"Description string?",
+		nullptr, // TODO: entropy
+		nullptr, // reserved
+		nullptr, // pass null for the prompt structure
+		0, // dwFlags
+		&dataOut);
+
+	if (!success)
+	{
+		DWORD errorCode = GetLastError();
+		isolate->ThrowException(v8::Exception::Error(
+			v8::String::NewFromUtf8(isolate, "Decryption failed. TODO: Error code")));
+
+		return;
+	}
+	
+	info.GetReturnValue().Set(static_cast<int>(dataOut.cbData));
 }
 
 NAN_MODULE_INIT(init)
