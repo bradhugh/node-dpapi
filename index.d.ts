@@ -1,11 +1,11 @@
 declare module "node-windpapi" {
-    declare function protect(
+    function protect(
         userData: Uint8Array,
         optionalEntropy: Uint8Array,
         scope: "CurrentUser" | "LocalMachine"
     ): Uint8Array;
 
-    declare function unprotect(
+    function unprotect(
         encryptedData: Uint8Array,
         optionalEntropy: Uint8Array,
         scope: "CurrentUser" | "LocalMachine"
