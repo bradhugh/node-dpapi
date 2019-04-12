@@ -1,4 +1,4 @@
-declare module "node-windpapi" {
+declare module "node-dpapi" {
     function protectData(
         userData: Uint8Array,
         optionalEntropy: Uint8Array,
