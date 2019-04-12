@@ -1,10 +1,10 @@
-const dpapi = require ('./build/Release/node-windpapi');
+const dpapi = require('bindings')('node-windpapi');
 
 const entropy = Buffer.from("AHHH!H!H!H!!!!", "utf-8");
 
 const buffer = Buffer.from("Hello World", "utf-8");
 
-const currentUser = dpapi.protect(buffer, null, 'currentUser');
+const currentUser = dpapi.protect(buffer, null, "CurrentUser");
 const withEntropy = dpapi.protect(buffer, entropy, 'currentUser');
 const localMachine = dpapi.protect(buffer, null, 'localMachine');
 
