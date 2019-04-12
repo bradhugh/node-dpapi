@@ -1,10 +1,10 @@
 {
-  "name": "node-windpapi",
+  "name": "node-dpapi",
   "version": "0.1.0",
-  "description": "Node native module to use Windows Data Protection API (DPAPI)",
+  "description": "Node native module to encrypt/decrpyt data. On Windows, it uses DPAPI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "keywords": [
     "dpapi",

@@ -1,8 +1,8 @@
 {
   "targets": [
     {
-      "target_name": "node-windpapi",
-      "sources": [ "src/node-windpapi.cpp" ],
+      "target_name": "node-dpapi",
+      "sources": [ "src/node-dpapi.cpp" ],
       "include_dirs": [
         "<!(node -e \"require('nan')\")",
         "include"

@@ -1,4 +1,4 @@
-const dpapi = require('bindings')('node-windpapi');
+const dpapi = require('bindings')('node-dpapi');
 
-module.exports.protect = dpapi.protect;
-module.exports.unprotect = dpapi.unprotect;
+module.exports.protectData = dpapi.protectData;
+module.exports.unprotectData = dpapi.unprotectData;

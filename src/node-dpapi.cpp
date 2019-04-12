@@ -4,7 +4,7 @@
 #include <dpapi.h>
 
 // public unsafe static byte[] Protect(byte[] userData, byte[] optionalEntropy, DataProtectionScope scope) 
-NAN_METHOD(protect)
+NAN_METHOD(protectData)
 {
 	v8::Isolate* isolate = info.GetIsolate();
 
@@ -86,7 +86,7 @@ NAN_METHOD(protect)
 }
 
 // public unsafe static byte[] Unprotect(byte[] encryptedData, byte[] optionalEntropy, DataProtectionScope scope)
-NAN_METHOD(unprotect)
+NAN_METHOD(unprotectData)
 {
 	v8::Isolate* isolate = info.GetIsolate();
 
@@ -171,13 +171,13 @@ NAN_MODULE_INIT(init)
 {
 	Nan::Set(
 		target,
-		Nan::New<v8::String>("protect").ToLocalChecked(),
-		Nan::GetFunction(Nan::New<v8::FunctionTemplate>(protect)).ToLocalChecked());
+		Nan::New<v8::String>("protectData").ToLocalChecked(),
+		Nan::GetFunction(Nan::New<v8::FunctionTemplate>(protectData)).ToLocalChecked());
 
 	Nan::Set(
 		target,
-		Nan::New<v8::String>("unprotect").ToLocalChecked(),
-		Nan::GetFunction(Nan::New<v8::FunctionTemplate>(unprotect)).ToLocalChecked());
+		Nan::New<v8::String>("unprotectData").ToLocalChecked(),
+		Nan::GetFunction(Nan::New<v8::FunctionTemplate>(unprotectData)).ToLocalChecked());
 }
 
 NODE_MODULE(binding, init)
