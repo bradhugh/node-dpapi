@@ -1,4 +1,4 @@
-declare module "node-dpapi" {
+declare module "@bradhugh/node-dpapi" {
     function protectData(
         userData: Uint8Array,
         optionalEntropy: Uint8Array,
