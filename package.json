@@ -1,10 +1,13 @@
 {
-  "name": "node-dpapi",
-  "version": "0.1.0",
+  "name": "@bradhugh/node-dpapi",
+  "version": "1.0.0",
   "description": "Node native module to encrypt/decrypt data. On Windows, it uses DPAPI",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
   },
   "keywords": [
     "dpapi",
