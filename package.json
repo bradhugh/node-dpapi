@@ -1,6 +1,6 @@
 {
   "name": "node-dpapi2",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Node native module to encrypt/decrypt data. On Windows, it uses DPAPI",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,10 @@
   ],
   "author": "Brad Hughes",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bradhugh/select-client-cert.git"
+  },
   "dependencies": {
     "bindings": "^1.5.0",
     "nan": "^2.13.2"

@@ -1,13 +1,13 @@
-declare module "@bradhugh/node-dpapi" {
+declare module "node-dpapi2" {
     function protectData(
         userData: Uint8Array,
-        optionalEntropy: Uint8Array,
+        optionalEntropy: Uint8Array | null,
         scope: "CurrentUser" | "LocalMachine"
     ): Uint8Array;
 
     function unprotectData(
         encryptedData: Uint8Array,
-        optionalEntropy: Uint8Array,
+        optionalEntropy: Uint8Array | null,
         scope: "CurrentUser" | "LocalMachine"
     ): Uint8Array;
 }
